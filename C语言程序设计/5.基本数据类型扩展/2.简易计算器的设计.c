@@ -18,9 +18,9 @@ int find_op(const char* s, char c) {
 }
 
 int main(int argc, char* argv[]) {
-    char s[1005] = "Y", ops[6] = "+-*/%";
+    char s[1005] = "y", ops[6] = "+-*/%";
     int a = 0, b = 0, op = 0;
-    while(s[strlen(s) - 1] == 'Y') {
+    while(s[strlen(s) - 1] == 'y') {
         a = b = op = 0;
         printf("输入运算表达式:");
         scanf("%s", s);
