@@ -76,6 +76,6 @@ int main(int argc, char* argv[]) {
                 break;
         }
     }
-
+    free(s);
     return 0;
 }
