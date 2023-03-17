@@ -128,7 +128,7 @@ def leftRecurrentShift(seq, n):
         del seq[0]
     return seq
 
-def PermuKey(ci, di):
+def permuKey(ci, di):
     k = []
     k.extend(ci)
     k.extend(di)
@@ -143,7 +143,7 @@ def genSubKeys(key):
     # generate subKeys
     for i in range(16):
         ci, di = leftRecurrentShift(ci, sd[i]), leftRecurrentShift(di, sd[i])
-        subKeys.append(PermuKey(ci, di))
+        subKeys.append(permuKey(ci, di))
 
     return
 
@@ -164,7 +164,8 @@ def fFunc(li, ri, k):
     return binListXOR(new_ri, li)
 
 key = "kabg3s$f"
-message = "Mineswee"
+print("Key:", key)
+message = "MiCh12#$"
 print("Message (Original):", message)
 genSubKeys(key)
 
