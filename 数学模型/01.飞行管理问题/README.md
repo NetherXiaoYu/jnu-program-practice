@@ -94,3 +94,4 @@ $$
 - [ ] PseudoCode
 - [ ] Performance Test
 - [ ] Graphs
+- [ ] Proof for $\sigma_1 \ne 0$ and $\sigma_2 \ne 0$ in $f(t)$
