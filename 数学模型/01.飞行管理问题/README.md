@@ -17,7 +17,7 @@
 首先我们对每架飞机的横方向和纵方向进行拆分，我们可以获得其关于时刻 $t$ 的横坐标和纵坐标式子如下：
 
 $$
-\begin{equation}\label{横纵向量}
+\begin{equation}
 x_{t+1} = x_0 + t \times k \times \cos(\theta) \\
 y_{t+1} = y_0 + t \times k \times \sin(\theta)
 \end{equation}
@@ -34,7 +34,7 @@ $$
 由题目我们可知每架飞机的航速一样，故我们有两架飞机（飞机1和飞机2，使用下标区分）在时刻 $t$ 的距离 $f(t)$ 如下：
 
 $$
-\begin{equation}\label{两飞机之间距离}
+\begin{equation}
 f(t) := \sqrt{((x_1 + 2\,t\,\cos(\theta_1) - (x_2 + 2\,t\, \cos(\theta_2))^2 + ((y_1 + 2\,t\, \sin(\theta_1) - (y_2 + 2\,t\,\sin(\theta_2))^2}
 \end{equation}
 $$
@@ -42,7 +42,7 @@ $$
 显然 $d(t)$ 可导，故我们有两架飞机对每时刻 $t$ 变化率为：
 
 $$
-\begin{equation}\label{每时刻距离变化率}
+\begin{equation}
 \frac{df}{dt}(t) = \frac{2\,{\left(2\,\cos \left(\theta_1 \right)-2\,\cos \left(\theta_2 \right)+1\right)}\,\sigma_2 +2\,{\left(2\,\sin \left(\theta_1 \right)-2\,\sin \left(\theta_2 \right)\right)}\,\sigma_1 }{2\,\sqrt{{\sigma_2 }^2 +{\sigma_1 }^2 }}
 \end{equation}
 $$
@@ -69,7 +69,7 @@ $$
 显然的，只需要将上一部分所计算的 $t$ 代入到距离 $f(t)$ 中即可得到两架飞机（飞机 $i$ 和 飞机 $j$）预计最贴近的距离 $d_{i, j}$，根据题目我们可以定义 $d_{i, j} > 8$ 的时候表明飞机不会相撞，可以进行与其他飞机的比较计算，反之则计算所需调整角度并且重新检测。我们可以将 $t$ 的原式子代入到 $f(t)$ 的原式子并且设 $\theta_1$ 和 $\theta_2$ 为因变量有：
 
 $$
-\begin{equation}\label{以角度为自变量的距离}
+\begin{equation}
 F\left(\theta_1,\, \theta_2\right) = \sqrt{{{\left(x-x_6 -\frac{2\,\cos \left(\theta_1 \right)\,\sigma_2 }{\sigma_1 }+\frac{2\,\cos \left(\theta_2 \right)\,\sigma_2 }{\sigma_1 }\right)}}^2 +{{\left(y-y_6 -\frac{2\,\sin \left(\theta_1 \right)\,\sigma_2 }{\sigma_1 }+\frac{2\,\sin \left(\theta_2 \right)\,\sigma_2 }{\sigma_1 }\right)}}^2}
 \end{equation}
 $$
