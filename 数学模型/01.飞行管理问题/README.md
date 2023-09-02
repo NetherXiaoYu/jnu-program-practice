@@ -12,4 +12,79 @@
 
 ## 具体理论
 
-待补充
+### 计算两架飞机距离最短的时刻
+
+首先我们对每架飞机的横方向和纵方向进行拆分，我们可以获得其关于时刻 $t$ 的横坐标和纵坐标式子如下：
+
+$$
+\begin{equation}\label{横纵向量}
+x_{t+1} = x_0 + t \times k \times \cos(\theta) \\
+y_{t+1} = y_0 + t \times k \times \sin(\theta)
+\end{equation}
+$$
+
+其中 $\theta$ 是飞机的在平面上的飞行角度，$k$ 为每个时刻飞机移动的距离，$x_0$，$y_0$ 为飞机初始的横纵坐标。我们已知飞机航速为 800km/h，我们不妨设每个时刻 $t$ 为 9 秒使得：
+
+$$
+\begin{equation}
+k := \frac{800}{3600}\times9 = 2
+\end{equation}
+$$
+
+由题目我们可知每架飞机的航速一样，故我们有两架飞机（飞机1和飞机2，使用下标区分）在时刻 $t$ 的距离 $f(t)$ 如下：
+
+$$
+\begin{equation}\label{两飞机之间距离}
+f(t) := \sqrt{((x_1 + 2\,t\,\cos(\theta_1) - (x_2 + 2\,t\, \cos(\theta_2))^2 + ((y_1 + 2\,t\, \sin(\theta_1) - (y_2 + 2\,t\,\sin(\theta_2))^2}
+\end{equation}
+$$
+
+显然 $d(t)$ 可导，故我们有两架飞机对每时刻 $t$ 变化率为：
+
+$$
+\begin{equation}\label{每时刻距离变化率}
+\frac{df}{dt}(t) = \frac{2\,{\left(2\,\cos \left(\theta_1 \right)-2\,\cos \left(\theta_2 \right)+1\right)}\,\sigma_2 +2\,{\left(2\,\sin \left(\theta_1 \right)-2\,\sin \left(\theta_2 \right)\right)}\,\sigma_1 }{2\,\sqrt{{\sigma_2 }^2 +{\sigma_1 }^2 }}
+\end{equation}
+$$
+
+其中
+
+$$
+\begin{flalign}
+\sigma_1 &= y-y_6 +2\,t\,\sin \left(\theta_1 \right)-2\,t\,\sin \left(\theta_2 \right) \\
+\sigma_2 &= x-x_6 +2\,t\,\cos \left(\theta_1 \right)-2\,t\,\cos \left(\theta_2 \right)
+\end{flalign}
+$$
+
+显然 $\sigma_1$ 与 $\sigma_2$ 不能同时为 0，这个稍后会再进行讨论，现在我们令 $\frac{df}{dt}(t) = 0$ 从而得出两架飞机距离最近的时刻 $t$：
+
+$$
+\begin{equation}
+t = -\frac{{\left(x-x_6 \right)}\,\left(4\,\cos \left(\theta_1 \right)-4\,\cos \left(\theta_2 \right)\right) +{\left(y-y_6 \right)}\,(4\,\sin \left(\theta_1 \right)-4\,\sin \left(\theta_2 \right)) }{{\left(2\,\sin \left(\theta_1 \right)-2\,\sin \left(\theta_2 \right)\right)}\,\left(4\,\sin \left(\theta_1 \right)-4\,\sin \left(\theta_2 \right)\right) +{\left(2\,\cos \left(\theta_1 \right)-2\,\cos \left(\theta_2 \right)\right)}\,\left(4\,\cos \left(\theta_1 \right)-4\,\cos \left(\theta_2 \right)\right) }
+\end{equation}
+$$
+
+### 飞机相撞的处理
+
+显然的，只需要将上一部分所计算的 $t$ 代入到距离 $f(t)$ 中即可得到两架飞机（飞机 $i$ 和 飞机 $j$）预计最贴近的距离 $d_{i, j}$，根据题目我们可以定义 $d_{i, j} > 8$ 的时候表明飞机不会相撞，可以进行与其他飞机的比较计算，反之则计算所需调整角度并且重新检测。我们可以将 $t$ 的原式子代入到 $f(t)$ 的原式子并且设 $\theta_1$ 和 $\theta_2$ 为因变量有：
+
+$$
+\begin{equation}\label{以角度为自变量的距离}
+F\left(\theta_1,\, \theta_2\right) = \sqrt{{{\left(x-x_6 -\frac{2\,\cos \left(\theta_1 \right)\,\sigma_2 }{\sigma_1 }+\frac{2\,\cos \left(\theta_2 \right)\,\sigma_2 }{\sigma_1 }\right)}}^2 +{{\left(y-y_6 -\frac{2\,\sin \left(\theta_1 \right)\,\sigma_2 }{\sigma_1 }+\frac{2\,\sin \left(\theta_2 \right)\,\sigma_2 }{\sigma_1 }\right)}}^2}
+\end{equation}
+$$
+
+其中
+
+$$
+\begin{flalign}
+\sigma_1 & ={\left(2\,\sin \left(\theta_1 \right)-2\,\sin \left(\theta_2 \right)\right)}\,{\left(4\,\sin \left(\theta_1 \right)-4\,\sin \left(\theta_2 \right)\right)}+{\left(2\,\cos \left(\theta_1 \right)-2\,\cos \left(\theta_2 \right)\right)}\,{\left(4\,\cos \left(\theta_1 \right)-4\,\cos \left(\theta_2 \right)\right)} \\ 
+\sigma_2 &={\left(x-x_6 \right)}\,{\left(4\,\cos \left(\theta_1 \right)-4\,\cos \left(\theta_2 \right)\right)}+{\left(y-y_6 \right)}\,{\left(4\,\sin \left(\theta_1 \right)-4\,\sin \left(\theta_2 \right)\right)}
+\end{flalign}
+$$
+
+并用题目 (a) 中的程序求出其两架飞机最大时候的距离及其角度 $\theta'_1$ 和 $\theta'_2$，其中 $\theta'_1 \in \left[\theta_1 - \frac{\pi}{6},\, \theta_1 -\frac{\pi}{6}\right]$ 以及 $\theta'_2 \in \left[\theta_2 - \frac{\pi}{6},\, \theta_2 -\frac{\pi}{6}\right]$，求出之后我们对角度修改为新的角度 $\theta'_1$ 和 $\theta'_2$ 并且分别重新计算飞机 1 和飞机 2 与其他飞机的相撞情况。
+
+### 代码实现
+
+详见 [main.m](./main.m)
