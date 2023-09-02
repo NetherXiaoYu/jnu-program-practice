@@ -66,11 +66,11 @@ $$
 
 ### 飞机相撞的处理
 
-显然的，只需要将上一部分所计算的 $t$ 代入到距离函数 $f$ 中即可得到两架飞机（飞机 $i$ 和 飞机 $j$）预计最贴近的距离 $d_{i, j}$，根据题目我们可以定义 $d_{i, j} > 8$ 的时候表明飞机不会相撞，可以进行与其他飞机的比较计算，反之则计算所需调整角度并且重新检测。我们可以将 $t$ 的原式子代入到 $f(t)$ 的原式子并且设 $\theta_1$ 和 $\theta_2$ 为因变量有：
+显然的，只需要将上一部分所计算的 $t$ 代入到距离函数 $f$ 中即可得到两架飞机（飞机 $i$ 和 飞机 $j$）预计最贴近的距离 $d_{i, j}$，根据题目我们可以定义 $d_{i, j} > 8$ 的时候表明飞机不会相撞，可以进行与其他飞机的比较计算，反之则计算所需调整角度并且重新检测。我们可以将 $t$ 的原式子代入到 $f(t)$ 的原式子有：
 
 $$
 \begin{equation}
-F\left(\theta_1, \theta_2\right) = \sqrt{{{\left(x_1-x_2 -\frac{2 \cos \left(\theta_1 \right) \sigma_2 }{\sigma_1 }+\frac{2 \cos \left(\theta_2 \right) \sigma_2 }{\sigma_1 }\right)}}^2 +{{\left(y_1-y_2 -\frac{2 \sin \left(\theta_1 \right) \sigma_2 }{\sigma_1 }+\frac{2 \sin \left(\theta_2 \right) \sigma_2 }{\sigma_1 }\right)}}^2}
+F\left(x_1, x_2, y_1, y_2, \theta_1, \theta_2\right) = \sqrt{{{\left(x_1-x_2 -\frac{2 \cos \left(\theta_1 \right) \sigma_2 }{\sigma_1 }+\frac{2 \cos \left(\theta_2 \right) \sigma_2 }{\sigma_1 }\right)}}^2 +{{\left(y_1-y_2 -\frac{2 \sin \left(\theta_1 \right) \sigma_2 }{\sigma_1 }+\frac{2 \sin \left(\theta_2 \right) \sigma_2 }{\sigma_1 }\right)}}^2}
 \end{equation}
 $$
 
@@ -83,7 +83,7 @@ $$
 \end{flalign}
 $$
 
-并用题目 (a) 中的程序求出其两架飞机最大时候的距离及其角度 $\theta'_1$ 和 $\theta'_2$，其中 $\theta'_1 \in \left[\theta_1 - \frac{\pi}{6},  \theta_1 -\frac{\pi}{6}\right]$ 以及 $\theta'_2 \in \left[\theta_2 - \frac{\pi}{6},  \theta_2 -\frac{\pi}{6}\right]$，求出之后我们对角度修改为新的角度 $\theta'_1$ 和 $\theta'_2$ 并且分别重新计算飞机 1 和飞机 2 与其他飞机的相撞情况。
+我们设横纵坐标为初始坐标（即成为常数）并用题目 (a) 中的程序求出其两架飞机最大时候的距离及其角度 $\theta'_1$ 和 $\theta'_2$，其中 $\theta'_1 \in \left[\theta_1 - \frac{\pi}{6},  \theta_1 -\frac{\pi}{6}\right]$ 以及 $\theta'_2 \in \left[\theta_2 - \frac{\pi}{6},  \theta_2 -\frac{\pi}{6}\right]$，求出之后我们对角度修改为新的角度 $\theta'_1$ 和 $\theta'_2$ 并且分别重新计算飞机 1 和飞机 2 与其他飞机的相撞情况。
 
 ### 代码实现
 
