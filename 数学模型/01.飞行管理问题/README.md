@@ -39,7 +39,7 @@ f(t) := \sqrt{((x_1 + 2\,t\,\cos(\theta_1) - (x_2 + 2\,t\, \cos(\theta_2))^2 + (
 \end{equation}
 $$
 
-显然 $d(t)$ 可导，故我们有两架飞机对每时刻 $t$ 变化率为：
+显然 $f(t)$ 可导，故我们有两架飞机对每时刻 $t$ 变化率为：
 
 $$
 \begin{equation}
