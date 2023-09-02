@@ -17,10 +17,10 @@
 首先我们对每架飞机的横方向和纵方向进行拆分，我们可以获得其关于时刻 $t$ 的横坐标和纵坐标式子如下：
 
 $$
-\begin{equation}
-x_{t+1} = x_0 + t \times k \times \cos(\theta) \\
-y_{t+1} = y_0 + t \times k \times \sin(\theta)
-\end{equation}
+\begin{flalign}
+x_{t+1} &= x_0 + t \times k \times \cos(\theta) \\
+y_{t+1} &= y_0 + t \times k \times \sin(\theta)
+\end{flalign}
 $$
 
 其中 $\theta$ 是飞机的在平面上的飞行角度，$k$ 为每个时刻飞机移动的距离， $x_0$ 和 $y_0$ 为飞机初始的横纵坐标。我们已知飞机航速为 800km/h，我们不妨设每个时刻 $t$ 为 9 秒使得：
@@ -35,7 +35,7 @@ $$
 
 $$
 \begin{equation}
-f(t) := \sqrt{((x_1 + 2\,t\,\cos(\theta_1) - (x_2 + 2\,t\, \cos(\theta_2))^2 + ((y_1 + 2\,t\, \sin(\theta_1) - (y_2 + 2\,t\,\sin(\theta_2))^2}
+f(t) := \sqrt{((x_1 + 2 t \cos(\theta_1) - (x_2 + 2 t  \cos(\theta_2))^2 + ((y_1 + 2 t  \sin(\theta_1) - (y_2 + 2 t \sin(\theta_2))^2}
 \end{equation}
 $$
 
@@ -43,7 +43,7 @@ $$
 
 $$
 \begin{equation}
-\frac{df}{dt}(t) = \frac{2\,{\left(2\,\cos \left(\theta_1 \right)-2\,\cos \left(\theta_2 \right)+1\right)}\,\sigma_2 +2\,{\left(2\,\sin \left(\theta_1 \right)-2\,\sin \left(\theta_2 \right)\right)}\,\sigma_1 }{2\,\sqrt{{\sigma_2 }^2 +{\sigma_1 }^2 }}
+\frac{df}{dt}(t) = \frac{2 {\left(2 \cos \left(\theta_1 \right)-2 \cos \left(\theta_2 \right)+1\right)} \sigma_2 +2 {\left(2 \sin \left(\theta_1 \right)-2 \sin \left(\theta_2 \right)\right)} \sigma_1 }{2 \sqrt{{\sigma_2 }^2 +{\sigma_1 }^2 }}
 \end{equation}
 $$
 
@@ -51,8 +51,8 @@ $$
 
 $$
 \begin{flalign}
-\sigma_1 &= y-y_6 +2\,t\,\sin \left(\theta_1 \right)-2\,t\,\sin \left(\theta_2 \right) \\
-\sigma_2 &= x-x_6 +2\,t\,\cos \left(\theta_1 \right)-2\,t\,\cos \left(\theta_2 \right)
+\sigma_1 &= y-y_6 +2 t \sin \left(\theta_1 \right)-2 t \sin \left(\theta_2 \right) \\
+\sigma_2 &= x-x_6 +2 t \cos \left(\theta_1 \right)-2 t \cos \left(\theta_2 \right)
 \end{flalign}
 $$
 
@@ -60,7 +60,7 @@ $$
 
 $$
 \begin{equation}
-t = -\frac{{\left(x-x_6 \right)}\,\left(4\,\cos \left(\theta_1 \right)-4\,\cos \left(\theta_2 \right)\right) +{\left(y-y_6 \right)}\,(4\,\sin \left(\theta_1 \right)-4\,\sin \left(\theta_2 \right)) }{{\left(2\,\sin \left(\theta_1 \right)-2\,\sin \left(\theta_2 \right)\right)}\,\left(4\,\sin \left(\theta_1 \right)-4\,\sin \left(\theta_2 \right)\right) +{\left(2\,\cos \left(\theta_1 \right)-2\,\cos \left(\theta_2 \right)\right)}\,\left(4\,\cos \left(\theta_1 \right)-4\,\cos \left(\theta_2 \right)\right) }
+t = -\frac{{\left(x-x_6 \right)} \left(4 \cos \left(\theta_1 \right)-4 \cos \left(\theta_2 \right)\right) +{\left(y-y_6 \right)} (4 \sin \left(\theta_1 \right)-4 \sin \left(\theta_2 \right)) }{{\left(2 \sin \left(\theta_1 \right)-2 \sin \left(\theta_2 \right)\right)} \left(4 \sin \left(\theta_1 \right)-4 \sin \left(\theta_2 \right)\right) +{\left(2 \cos \left(\theta_1 \right)-2 \cos \left(\theta_2 \right)\right)} \left(4 \cos \left(\theta_1 \right)-4 \cos \left(\theta_2 \right)\right) }
 \end{equation}
 $$
 
@@ -70,7 +70,7 @@ $$
 
 $$
 \begin{equation}
-F\left(\theta_1,\, \theta_2\right) = \sqrt{{{\left(x-x_6 -\frac{2\,\cos \left(\theta_1 \right)\,\sigma_2 }{\sigma_1 }+\frac{2\,\cos \left(\theta_2 \right)\,\sigma_2 }{\sigma_1 }\right)}}^2 +{{\left(y-y_6 -\frac{2\,\sin \left(\theta_1 \right)\,\sigma_2 }{\sigma_1 }+\frac{2\,\sin \left(\theta_2 \right)\,\sigma_2 }{\sigma_1 }\right)}}^2}
+F\left(\theta_1, \theta_2\right) = \sqrt{{{\left(x-x_6 -\frac{2 \cos \left(\theta_1 \right) \sigma_2 }{\sigma_1 }+\frac{2 \cos \left(\theta_2 \right) \sigma_2 }{\sigma_1 }\right)}}^2 +{{\left(y-y_6 -\frac{2 \sin \left(\theta_1 \right) \sigma_2 }{\sigma_1 }+\frac{2 \sin \left(\theta_2 \right) \sigma_2 }{\sigma_1 }\right)}}^2}
 \end{equation}
 $$
 
@@ -78,12 +78,12 @@ $$
 
 $$
 \begin{flalign}
-\sigma_1 & ={\left(2\,\sin \left(\theta_1 \right)-2\,\sin \left(\theta_2 \right)\right)}\,{\left(4\,\sin \left(\theta_1 \right)-4\,\sin \left(\theta_2 \right)\right)}+{\left(2\,\cos \left(\theta_1 \right)-2\,\cos \left(\theta_2 \right)\right)}\,{\left(4\,\cos \left(\theta_1 \right)-4\,\cos \left(\theta_2 \right)\right)} \\ 
-\sigma_2 &={\left(x-x_6 \right)}\,{\left(4\,\cos \left(\theta_1 \right)-4\,\cos \left(\theta_2 \right)\right)}+{\left(y-y_6 \right)}\,{\left(4\,\sin \left(\theta_1 \right)-4\,\sin \left(\theta_2 \right)\right)}
+\sigma_1 & ={\left(2 \sin \left(\theta_1 \right)-2 \sin \left(\theta_2 \right)\right)} {\left(4 \sin \left(\theta_1 \right)-4 \sin \left(\theta_2 \right)\right)}+{\left(2 \cos \left(\theta_1 \right)-2 \cos \left(\theta_2 \right)\right)} {\left(4 \cos \left(\theta_1 \right)-4 \cos \left(\theta_2 \right)\right)} \\ 
+\sigma_2 &={\left(x-x_6 \right)} {\left(4 \cos \left(\theta_1 \right)-4 \cos \left(\theta_2 \right)\right)}+{\left(y-y_6 \right)} {\left(4 \sin \left(\theta_1 \right)-4 \sin \left(\theta_2 \right)\right)}
 \end{flalign}
 $$
 
-并用题目 (a) 中的程序求出其两架飞机最大时候的距离及其角度 $\theta'_1$ 和 $\theta'_2$，其中 $\theta'_1 \in \left[\theta_1 - \frac{\pi}{6},\, \theta_1 -\frac{\pi}{6}\right]$ 以及 $\theta'_2 \in \left[\theta_2 - \frac{\pi}{6},\, \theta_2 -\frac{\pi}{6}\right]$，求出之后我们对角度修改为新的角度 $\theta'_1$ 和 $\theta'_2$ 并且分别重新计算飞机 1 和飞机 2 与其他飞机的相撞情况。
+并用题目 (a) 中的程序求出其两架飞机最大时候的距离及其角度 $\theta'_1$ 和 $\theta'_2$，其中 $\theta'_1 \in \left[\theta_1 - \frac{\pi}{6},  \theta_1 -\frac{\pi}{6}\right]$ 以及 $\theta'_2 \in \left[\theta_2 - \frac{\pi}{6},  \theta_2 -\frac{\pi}{6}\right]$，求出之后我们对角度修改为新的角度 $\theta'_1$ 和 $\theta'_2$ 并且分别重新计算飞机 1 和飞机 2 与其他飞机的相撞情况。
 
 ### 代码实现
 
