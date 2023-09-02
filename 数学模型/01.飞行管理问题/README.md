@@ -18,8 +18,8 @@
 
 $$
 \begin{flalign}
-x_{t+1} &= x_0 + t \times k \times \cos(\theta) \\
-y_{t+1} &= y_0 + t \times k \times \sin(\theta)
+x_{t+1} &= x_0 + t k \cos(\theta) \\
+y_{t+1} &= y_0 + t k \sin(\theta)
 \end{flalign}
 $$
 
