@@ -31,19 +31,19 @@ k := \frac{800}{3600}\times9 = 2
 \end{equation}
 $$
 
-由题目我们可知每架飞机的航速一样，故我们有两架飞机（飞机1和飞机2，使用下标区分）在时刻 $t$ 的距离 $f(t)$ 如下：
+由题目我们可知每架飞机的航速一样，故我们有两架飞机（飞机1和飞机2，使用下标区分）在时刻 $t$ 的距离如下：
 
 $$
 \begin{equation}
-f(t) := \sqrt{((x_1 + 2 t \cos(\theta_1) - (x_2 + 2 t  \cos(\theta_2))^2 + ((y_1 + 2 t  \sin(\theta_1) - (y_2 + 2 t \sin(\theta_2))^2}
+f(t, x_1, x_2, y_1, y_2, \theta_1, \theta_2) := \sqrt{((x_1 + 2 t \cos(\theta_1) - (x_2 + 2 t  \cos(\theta_2))^2 + ((y_1 + 2 t  \sin(\theta_1) - (y_2 + 2 t \sin(\theta_2))^2}
 \end{equation}
 $$
 
-显然 $f(t)$ 可导，故我们有两架飞机对每时刻 $t$ 变化率为：
+显然 $f(t)$ 对 $t$ 可导，故我们有两架飞机对每时刻 $t$ 变化率为：
 
 $$
 \begin{equation}
-\frac{df}{dt}(t) = \frac{2 {\left(2 \cos \left(\theta_1 \right)-2 \cos \left(\theta_2 \right)+1\right)} \sigma_2 +2 {\left(2 \sin \left(\theta_1 \right)-2 \sin \left(\theta_2 \right)\right)} \sigma_1 }{2 \sqrt{{\sigma_2 }^2 +{\sigma_1 }^2 }}
+\frac{\partial f}{\partial t}(t, x_1, x_2, y_1, y_2, \theta_1, \theta_2) = \frac{2 {\left(2 \cos \left(\theta_1 \right)-2 \cos \left(\theta_2 \right)+1\right)} \sigma_2 +2 {\left(2 \sin \left(\theta_1 \right)-2 \sin \left(\theta_2 \right)\right)} \sigma_1 }{2 \sqrt{{\sigma_2 }^2 +{\sigma_1 }^2 }} =: r
 \end{equation}
 $$
 
@@ -51,26 +51,26 @@ $$
 
 $$
 \begin{flalign}
-\sigma_1 &= y-y_6 +2 t \sin \left(\theta_1 \right)-2 t \sin \left(\theta_2 \right) \\
-\sigma_2 &= x-x_6 +2 t \cos \left(\theta_1 \right)-2 t \cos \left(\theta_2 \right)
+\sigma_1 &= y_1-y_2 +2 t \sin \left(\theta_1 \right)-2 t \sin \left(\theta_2 \right) \\
+\sigma_2 &= x_1-x_2 +2 t \cos \left(\theta_1 \right)-2 t \cos \left(\theta_2 \right)
 \end{flalign}
 $$
 
-显然 $\sigma_1$ 与 $\sigma_2$ 不能同时为 0，这个稍后会再进行讨论，现在我们令 $\frac{df}{dt}(t) = 0$ 从而得出两架飞机距离最近的时刻 $t$：
+显然 $\sigma_1$ 与 $\sigma_2$ 不能同时为 0，这个稍后会再进行讨论，现在我们令 $r = 0$ 从而得出两架飞机距离最近的时刻 $t$：
 
 $$
 \begin{equation}
-t = -\frac{{\left(x-x_6 \right)} \left(4 \cos \left(\theta_1 \right)-4 \cos \left(\theta_2 \right)\right) +{\left(y-y_6 \right)} (4 \sin \left(\theta_1 \right)-4 \sin \left(\theta_2 \right)) }{{\left(2 \sin \left(\theta_1 \right)-2 \sin \left(\theta_2 \right)\right)} \left(4 \sin \left(\theta_1 \right)-4 \sin \left(\theta_2 \right)\right) +{\left(2 \cos \left(\theta_1 \right)-2 \cos \left(\theta_2 \right)\right)} \left(4 \cos \left(\theta_1 \right)-4 \cos \left(\theta_2 \right)\right) }
+t = -\frac{{\left(x_1-x_2 \right)} \left(4 \cos \left(\theta_1 \right)-4 \cos \left(\theta_2 \right)\right) +{\left(y_1-y_2 \right)} (4 \sin \left(\theta_1 \right)-4 \sin \left(\theta_2 \right)) }{{\left(2 \sin \left(\theta_1 \right)-2 \sin \left(\theta_2 \right)\right)} \left(4 \sin \left(\theta_1 \right)-4 \sin \left(\theta_2 \right)\right) +{\left(2 \cos \left(\theta_1 \right)-2 \cos \left(\theta_2 \right)\right)} \left(4 \cos \left(\theta_1 \right)-4 \cos \left(\theta_2 \right)\right) } 
 \end{equation}
 $$
 
 ### 飞机相撞的处理
 
-显然的，只需要将上一部分所计算的 $t$ 代入到距离 $f(t)$ 中即可得到两架飞机（飞机 $i$ 和 飞机 $j$）预计最贴近的距离 $d_{i, j}$，根据题目我们可以定义 $d_{i, j} > 8$ 的时候表明飞机不会相撞，可以进行与其他飞机的比较计算，反之则计算所需调整角度并且重新检测。我们可以将 $t$ 的原式子代入到 $f(t)$ 的原式子并且设 $\theta_1$ 和 $\theta_2$ 为因变量有：
+显然的，只需要将上一部分所计算的 $t$ 代入到距离函数 $f$ 中即可得到两架飞机（飞机 $i$ 和 飞机 $j$）预计最贴近的距离 $d_{i, j}$，根据题目我们可以定义 $d_{i, j} > 8$ 的时候表明飞机不会相撞，可以进行与其他飞机的比较计算，反之则计算所需调整角度并且重新检测。我们可以将 $t$ 的原式子代入到 $f(t)$ 的原式子并且设 $\theta_1$ 和 $\theta_2$ 为因变量有：
 
 $$
 \begin{equation}
-F\left(\theta_1, \theta_2\right) = \sqrt{{{\left(x-x_6 -\frac{2 \cos \left(\theta_1 \right) \sigma_2 }{\sigma_1 }+\frac{2 \cos \left(\theta_2 \right) \sigma_2 }{\sigma_1 }\right)}}^2 +{{\left(y-y_6 -\frac{2 \sin \left(\theta_1 \right) \sigma_2 }{\sigma_1 }+\frac{2 \sin \left(\theta_2 \right) \sigma_2 }{\sigma_1 }\right)}}^2}
+F\left(\theta_1, \theta_2\right) = \sqrt{{{\left(x_1-x_2 -\frac{2 \cos \left(\theta_1 \right) \sigma_2 }{\sigma_1 }+\frac{2 \cos \left(\theta_2 \right) \sigma_2 }{\sigma_1 }\right)}}^2 +{{\left(y_1-y_2 -\frac{2 \sin \left(\theta_1 \right) \sigma_2 }{\sigma_1 }+\frac{2 \sin \left(\theta_2 \right) \sigma_2 }{\sigma_1 }\right)}}^2}
 \end{equation}
 $$
 
@@ -79,7 +79,7 @@ $$
 $$
 \begin{flalign}
 \sigma_1 & ={\left(2 \sin \left(\theta_1 \right)-2 \sin \left(\theta_2 \right)\right)} {\left(4 \sin \left(\theta_1 \right)-4 \sin \left(\theta_2 \right)\right)}+{\left(2 \cos \left(\theta_1 \right)-2 \cos \left(\theta_2 \right)\right)} {\left(4 \cos \left(\theta_1 \right)-4 \cos \left(\theta_2 \right)\right)} \\ 
-\sigma_2 &={\left(x-x_6 \right)} {\left(4 \cos \left(\theta_1 \right)-4 \cos \left(\theta_2 \right)\right)}+{\left(y-y_6 \right)} {\left(4 \sin \left(\theta_1 \right)-4 \sin \left(\theta_2 \right)\right)}
+\sigma_2 &={\left(x_1-x_2 \right)} {\left(4 \cos \left(\theta_1 \right)-4 \cos \left(\theta_2 \right)\right)}+{\left(y_1-y_2 \right)} {\left(4 \sin \left(\theta_1 \right)-4 \sin \left(\theta_2 \right)\right)}
 \end{flalign}
 $$
 
@@ -91,7 +91,7 @@ $$
 
 ## ToDo
 
-- [ ] PseudoCode
-- [ ] Performance Test
-- [ ] Graphs
-- [ ] Proof for $\sigma_1 \ne 0$ and $\sigma_2 \ne 0$ in $f(t)$
+- [ ] 伪代码及代码分析
+- [ ] 性能测试及分析
+- [ ] 图表
+- [ ] 在距离函数 $f$ 中的 $\sigma_1 \ne 0$ 和 $\sigma_2 \ne 0$ 的证明
