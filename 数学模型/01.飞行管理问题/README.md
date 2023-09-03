@@ -56,7 +56,7 @@ $$
 \end{flalign}
 $$
 
-显然 $\sigma_1$ 与 $\sigma_2$ 不能同时为 0，这个我们建立 **特例1** 专门讨论，现在我们令 $r = 0$ 从而得出两架飞机距离最近的时刻 $t$：
+显然 $\sigma_1$ 与 $\sigma_2$ 不能同时为 0，这个我们建立 **特例1** 专门讨论 $\sigma_1$ 与 $\sigma_2$ 同时为 0 的情况，现在我们令 $r = 0$ 从而得出两架飞机距离最近的时刻 $t$：
 
 $$
 \begin{equation}
@@ -64,7 +64,7 @@ t = -\frac{{\left(x_1-x_2 \right)} \left(4 \cos \left(\theta_1 \right)-4 \cos \l
 \end{equation}
 $$
 
-这里显然的分母不能为 0 ，故我们同样建立 **特例2**。
+这里显然的分母不能为 0 ，故我们同样建立 **特例2**，即分母为 0 的情况。
 
 ### 飞机相撞的处理
 
@@ -87,13 +87,23 @@ $$
 
 因为上一部分我们设定了特例，故这里的 $\sigma_1$ 与 $\sigma_2$ 均不为 0 。我们设横纵坐标为初始坐标（即成为常数）并用题目 (a) 中的程序求出其两架飞机最大时候的距离及其角度 $\theta'_1$ 和 $\theta'_2$，其中 $\theta'_1 \in \left[\theta_1 - \frac{\pi}{6},  \theta_1 -\frac{\pi}{6}\right]$ 以及 $\theta'_2 \in \left[\theta_2 - \frac{\pi}{6},  \theta_2 -\frac{\pi}{6}\right]$，求出之后我们对角度修改为新的角度 $\theta'_1$ 和 $\theta'_2$ 并且分别重新计算飞机 1 和飞机 2 与其他飞机的相撞情况。
 
-### 特例 1
+### 针对特例 1 和 2 的讨论
 
-To be done
+我们先来讨论**特例 2**，特例 2 有：
 
-### 特例 2
+$$
+{{\left(2 \sin \left(\theta_1 \right)-2 \sin \left(\theta_2 \right)\right)} \left(4 \sin \left(\theta_1 \right)-4 \sin \left(\theta_2 \right)\right) +{\left(2 \cos \left(\theta_1 \right)-2 \cos \left(\theta_2 \right)\right)} \left(4 \cos \left(\theta_1 \right)-4 \cos \left(\theta_2 \right)\right) } = 0
+$$
 
-To be done
+通过运算可知唯有当 $\theta_1 = \theta_2$ 的时候才存在特例 2 的情况，由题目保障飞机刚进入区域边缘时必定与其他飞机保持 60km 的距离并且保证每架飞机航速一样，若飞行角度一样，则必不可能发生相撞，故可将该飞机排除出检测范围。
+
+接下来讨论**特例 1**，要存在特例 1，则两架飞机必定在某时刻 $t$ 存在完全的横纵坐标相撞的情况，即：
+
+$$
+\sqrt{(y_1-y_2 +2 t \sin \left(\theta_1 \right)-2 t \sin \left(\theta_2 \right))^2 + (x_1-x_2 +2 t \cos \left(\theta_1 \right)-2 t \cos \left(\theta_2 \right))^2} = 0
+$$
+
+且由于我们通过横纵分拆后的方程可计算每架飞机在每个时刻 $t$ 的横纵坐标，故我们可以在运行前先进性运算检测是否会发生完全相撞的情况，从而避免特例 1 的情况发生。
 
 ### 代码实现
 
@@ -104,4 +114,4 @@ To be done
 - [ ] 伪代码及代码分析
 - [ ] 性能测试及分析
 - [ ] 图表
-- [ ] 在距离函数 $f$ 中的 $\sigma_1 \ne 0$ 和 $\sigma_2 \ne 0$ 的证明
+- [x] ~~在距离函数 $f$ 中的 $\sigma_1 \ne 0$ 和 $\sigma_2 \ne 0$ 的证明~~
