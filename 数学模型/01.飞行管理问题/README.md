@@ -85,7 +85,7 @@ $$
 \end{flalign}
 $$
 
-我们设横纵坐标为初始坐标（即成为常数）并用题目 (a) 中的程序求出其两架飞机最大时候的距离及其角度 $\theta'_1$ 和 $\theta'_2$，其中 $\theta'_1 \in \left[\theta_1 - \frac{\pi}{6},  \theta_1 -\frac{\pi}{6}\right]$ 以及 $\theta'_2 \in \left[\theta_2 - \frac{\pi}{6},  \theta_2 -\frac{\pi}{6}\right]$，求出之后我们对角度修改为新的角度 $\theta'_1$ 和 $\theta'_2$ 并且分别重新计算飞机 1 和飞机 2 与其他飞机的相撞情况。
+因为上一部分我们设定了特例，故这里的 $\sigma_1$ 与 $\sigma_2$ 均不为 0 。我们设横纵坐标为初始坐标（即成为常数）并用题目 (a) 中的程序求出其两架飞机最大时候的距离及其角度 $\theta'_1$ 和 $\theta'_2$，其中 $\theta'_1 \in \left[\theta_1 - \frac{\pi}{6},  \theta_1 -\frac{\pi}{6}\right]$ 以及 $\theta'_2 \in \left[\theta_2 - \frac{\pi}{6},  \theta_2 -\frac{\pi}{6}\right]$，求出之后我们对角度修改为新的角度 $\theta'_1$ 和 $\theta'_2$ 并且分别重新计算飞机 1 和飞机 2 与其他飞机的相撞情况。
 
 ### 特例 1
 
