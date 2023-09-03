@@ -56,13 +56,15 @@ $$
 \end{flalign}
 $$
 
-显然 $\sigma_1$ 与 $\sigma_2$ 不能同时为 0，这个稍后会再进行讨论，现在我们令 $r = 0$ 从而得出两架飞机距离最近的时刻 $t$：
+显然 $\sigma_1$ 与 $\sigma_2$ 不能同时为 0，这个我们建立 ** 特例1** 专门讨论，现在我们令 $r = 0$ 从而得出两架飞机距离最近的时刻 $t$：
 
 $$
 \begin{equation}
 t = -\frac{{\left(x_1-x_2 \right)} \left(4 \cos \left(\theta_1 \right)-4 \cos \left(\theta_2 \right)\right) +{\left(y_1-y_2 \right)} (4 \sin \left(\theta_1 \right)-4 \sin \left(\theta_2 \right)) }{{\left(2 \sin \left(\theta_1 \right)-2 \sin \left(\theta_2 \right)\right)} \left(4 \sin \left(\theta_1 \right)-4 \sin \left(\theta_2 \right)\right) +{\left(2 \cos \left(\theta_1 \right)-2 \cos \left(\theta_2 \right)\right)} \left(4 \cos \left(\theta_1 \right)-4 \cos \left(\theta_2 \right)\right) } 
 \end{equation}
 $$
+
+这里显然的分母不能为 0 ，故我们同样建立 **特例2**。
 
 ### 飞机相撞的处理
 
@@ -84,6 +86,14 @@ $$
 $$
 
 我们设横纵坐标为初始坐标（即成为常数）并用题目 (a) 中的程序求出其两架飞机最大时候的距离及其角度 $\theta'_1$ 和 $\theta'_2$，其中 $\theta'_1 \in \left[\theta_1 - \frac{\pi}{6},  \theta_1 -\frac{\pi}{6}\right]$ 以及 $\theta'_2 \in \left[\theta_2 - \frac{\pi}{6},  \theta_2 -\frac{\pi}{6}\right]$，求出之后我们对角度修改为新的角度 $\theta'_1$ 和 $\theta'_2$ 并且分别重新计算飞机 1 和飞机 2 与其他飞机的相撞情况。
+
+### 特例 1
+
+To be done
+
+### 特例 2
+
+To be done
 
 ### 代码实现
 
