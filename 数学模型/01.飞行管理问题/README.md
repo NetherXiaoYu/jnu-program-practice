@@ -7,6 +7,7 @@
 |- SimpleQueue.m                自定义简单队列（因为 Matlab 自带的队列不想搞）
 |- calcMaxAndReturnParams.m     对于问题 (a) 的其中一个代码，找到最大值并且返回参数以及结果
 |- calcMinAndReturnParams.m     对于问题 (a) 的其中一个代码，找到最小值并且返回参数以及结果
+|- newCalcMaxAndReturnParams.m  使用值域分割方法进行 calcMaxAndReturnParams.m 的内容，可大幅缩减运算时间
 |- distance.m                   数据可视化文件，将修改角度后的每辆飞机之间的距离进行绘制
 |- originaldistance.m           数据可视化文件，将修改角度前的每辆飞机之间的距离进行绘制
 |- routegraph.m                 数据可视化文件，将飞机的坐标与时刻关系进行三维图绘制
@@ -124,7 +125,7 @@ $$
 
 ### 调整结果
 
-我们通过运行代码，发现**只需要调整飞机 3 与飞机 6 的飞行角度**，即可完美避开所有飞机，我们将**飞机 3 的飞行角度调整为 250.5 度**，同时将 **飞机 6 即检测飞机的飞行角度调整为 82 度**，即可避免所有碰撞。通过调整角度后我们重新编写 [Matlab 程序](./distance.m)进行距离画图有如下：
+我们通过运行代码，发现**只需要调整飞机 3 与飞机 6 的飞行角度**，即可完美避开所有飞机，我们将**飞机 3 的飞行角度调整为 232.5321 度**，同时将 **飞机 6 即检测飞机的飞行角度调整为 69.9679 度**，即可避免所有碰撞。通过调整角度后我们重新编写 [Matlab 程序](./distance.m)进行距离画图有如下：
 
 ![https://raw.githubusercontent.com/NetherXiaoYu/jnu-program-practice/master/%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B/01.%E9%A3%9E%E8%A1%8C%E7%AE%A1%E7%90%86%E9%97%AE%E9%A2%98/imgs/adjusteddistance.jpg](https://raw.githubusercontent.com/NetherXiaoYu/jnu-program-practice/master/%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B/01.%E9%A3%9E%E8%A1%8C%E7%AE%A1%E7%90%86%E9%97%AE%E9%A2%98/imgs/adjusteddistance.jpg)
 
