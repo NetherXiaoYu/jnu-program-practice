@@ -7,7 +7,7 @@
 |- SimpleQueue.m                自定义简单队列（因为 Matlab 自带的队列不想搞）
 |- calcMaxAndReturnParams.m     对于问题 (a) 的其中一个代码，找到最大值并且返回参数以及结果
 |- calcMinAndReturnParams.m     对于问题 (a) 的其中一个代码，找到最小值并且返回参数以及结果
-|- newCalcMaxAndReturnParams.m  使用值域分割方法进行 calcMaxAndReturnParams.m 的内容，可大幅缩减运算时间
+|- newCalcMaxAndReturnParams.m  使用定义域分割方法进行 calcMaxAndReturnParams.m 的内容，可大幅缩减运算时间
 |- distance.m                   数据可视化文件，将修改角度后的每辆飞机之间的距离进行绘制
 |- originaldistance.m           数据可视化文件，将修改角度前的每辆飞机之间的距离进行绘制
 |- routegraph.m                 数据可视化文件，将飞机的坐标与时刻关系进行三维图绘制
