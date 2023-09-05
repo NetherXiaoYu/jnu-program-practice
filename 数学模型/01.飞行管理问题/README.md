@@ -3,10 +3,13 @@
 ## 文件结构
 
 ```
+|- imgs/                        所用到的所有图片
 |- SimpleQueue.m                自定义简单队列（因为 Matlab 自带的队列不想搞）
 |- calcMaxAndReturnParams.m     对于问题 (a) 的其中一个代码，找到最大值并且返回参数以及结果
 |- calcMinAndReturnParams.m     对于问题 (a) 的其中一个代码，找到最小值并且返回参数以及结果
-|- distance.m                   数据可视化文件，将修改角度前后的每辆飞机之间的距离进行绘制
+|- distance.m                   数据可视化文件，将修改角度后的每辆飞机之间的距离进行绘制
+|- originaldistance.m           数据可视化文件，将修改角度前的每辆飞机之间的距离进行绘制
+|- routegraph.m                 数据可视化文件，将飞机的坐标与时刻关系进行三维图绘制
 |- main.m                       主程序，用来计算需要修改的飞机及其角度的
 ```
 
@@ -105,6 +108,28 @@ $$
 
 且由于我们通过横纵分拆后的方程可计算每架飞机在每个时刻 $t$ 的横纵坐标，故我们可以在运行前先进性运算检测是否会发生完全相撞的情况，从而避免特例 1 的情况发生。
 
+## 具体分析
+
+### 针对数据的预先分析
+
+我们根据题目所给的数据，使用 [Matlab 程序](./routegraph.m)进行三维绘图展示出了每家飞机根据时刻 $t$ 变化的不同的位置如下图（详细图可见 [Matlab 图表](./imgs/routegraph.fig) ）
+
+![https://raw.githubusercontent.com/NetherXiaoYu/jnu-program-practice/master/%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B/01.%E9%A3%9E%E8%A1%8C%E7%AE%A1%E7%90%86%E9%97%AE%E9%A2%98/imgs/routegraph.jpg](https://raw.githubusercontent.com/NetherXiaoYu/jnu-program-practice/master/%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B/01.%E9%A3%9E%E8%A1%8C%E7%AE%A1%E7%90%86%E9%97%AE%E9%A2%98/imgs/routegraph.jpg)
+
+为了更好的展示，我们根据距离公式使用 [Matlab 程序](./originaldistance.m)画出检测飞机与其他飞机根据时刻 $t$ 变化的距离如下图：
+
+![https://raw.githubusercontent.com/NetherXiaoYu/jnu-program-practice/master/%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B/01.%E9%A3%9E%E8%A1%8C%E7%AE%A1%E7%90%86%E9%97%AE%E9%A2%98/imgs/originaldistance.jpg](https://raw.githubusercontent.com/NetherXiaoYu/jnu-program-practice/master/%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B/01.%E9%A3%9E%E8%A1%8C%E7%AE%A1%E7%90%86%E9%97%AE%E9%A2%98/imgs/originaldistance.jpg)
+
+可以看到的是，目标飞机将会于区域内的**飞机 3** 和**飞机 5** 发生碰撞，但两架飞机均**不会发生完全相撞，即特例 1 的情况**（与飞机三最短距离仍有约 1km），所以我们代码暂不用实现针对特例 1 的情况，同时通过观察数据我们发生也**不存在特例 2 的情况**，所以代码不用针对上述特例进行处理。
+
+### 调整结果
+
+我们通过运行代码，发现**只需要调整飞机 3 与飞机 6 的飞行角度**，即可完美避开所有飞机，我们将**飞机 3 的飞行角度调整为 250.5 度**，同时将 **飞机 6 即检测飞机的飞行角度调整为 82 度**，即可避免所有碰撞。通过调整角度后我们重新编写 [Matlab 程序](./distance.m)进行距离画图有如下：
+
+![https://raw.githubusercontent.com/NetherXiaoYu/jnu-program-practice/master/%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B/01.%E9%A3%9E%E8%A1%8C%E7%AE%A1%E7%90%86%E9%97%AE%E9%A2%98/imgs/adjusteddistance.jpg](https://raw.githubusercontent.com/NetherXiaoYu/jnu-program-practice/master/%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B/01.%E9%A3%9E%E8%A1%8C%E7%AE%A1%E7%90%86%E9%97%AE%E9%A2%98/imgs/adjusteddistance.jpg)
+
+可以发现已经完全达到所设定的目的。
+
 ### 代码实现
 
 详见 [main.m](./main.m)
@@ -113,5 +138,5 @@ $$
 
 - [ ] 伪代码及代码分析
 - [ ] 性能测试及分析
-- [ ] 图表
+- [x] ~~图表~~
 - [x] ~~在距离函数 $f$ 中的 $\sigma_1 \ne 0$ 和 $\sigma_2 \ne 0$ 的证明~~
