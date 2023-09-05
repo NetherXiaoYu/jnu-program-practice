@@ -3,8 +3,7 @@ clc
 % 读入数据
 planes = [[150, 140]; [85, 85]; [150, 155]; [145, 50]; [130, 150]; [0, 0]];
 degrees = [243; 236; 220.5; 159; 230; 52];
-degrees_up = deg2rad(degrees) + (pi / 6);
-degrees_low = deg2rad(degrees) - (pi / 6);
+degrees_original = [243; 236; 220.5; 159; 230; 52];
 
 detectQueue = SimpleQueue();
 detectQueue = push(detectQueue, 6);
@@ -31,7 +30,9 @@ while empty(detectQueue) ~= true
             disp(append("飞机 ", num2str(i), " 与新加入飞机将会在时刻 ", num2str(t), " 相撞，距离为 ", num2str(d), " km"))
             syms f(theta1, theta2)
             f(theta1, theta2) = ((x - x6 - (2*cos(theta1)*((x - x6)*(4*cos(theta1) - 4*cos(theta2)) + (y - y6)*(4*sin(theta1) - 4*sin(theta2))))/((2*sin(theta1) - 2*sin(theta2))*(4*sin(theta1) - 4*sin(theta2)) + (2*cos(theta1) - 2*cos(theta2))*(4*cos(theta1) - 4*cos(theta2))) + (2*cos(theta2)*((x - x6)*(4*cos(theta1) - 4*cos(theta2)) + (y - y6)*(4*sin(theta1) - 4*sin(theta2))))/((2*sin(theta1) - 2*sin(theta2))*(4*sin(theta1) - 4*sin(theta2)) + (2*cos(theta1) - 2*cos(theta2))*(4*cos(theta1) - 4*cos(theta2))))^2 + (y - y6 - (2*sin(theta1)*((x - x6)*(4*cos(theta1) - 4*cos(theta2)) + (y - y6)*(4*sin(theta1) - 4*sin(theta2))))/((2*sin(theta1) - 2*sin(theta2))*(4*sin(theta1) - 4*sin(theta2)) + (2*cos(theta1) - 2*cos(theta2))*(4*cos(theta1) - 4*cos(theta2))) + (2*sin(theta2)*((x - x6)*(4*cos(theta1) - 4*cos(theta2)) + (y - y6)*(4*sin(theta1) - 4*sin(theta2))))/((2*sin(theta1) - 2*sin(theta2))*(4*sin(theta1) - 4*sin(theta2)) + (2*cos(theta1) - 2*cos(theta2))*(4*cos(theta1) - 4*cos(theta2))))^2)^(1/2);
-            [new_theta1, new_theta2, max_d] = calcMaxAndReturnParams(f, degrees_low(i), degrees_up(i), degrees_low(target), degrees_up(target));
+            degrees_delta = sum(abs(degrees_original - degrees));
+            usable_degree = (pi / 6) - deg2rad(degrees_delta);
+            [new_theta1, new_theta2, max_d] = newCalcMaxAndReturnParams(f, deg2rad(degrees(i)), deg2rad(degrees(target)), usable_degree);
             if max_d <= 8
                 disp("没救了")
                 flag = true;
