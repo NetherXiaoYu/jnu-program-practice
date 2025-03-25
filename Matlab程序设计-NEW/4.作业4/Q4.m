@@ -1,0 +1,26 @@
+clear;
+clc;
+
+x = 0:0.001:10;
+figure;
+hold on;
+subplot(2, 2, 1);
+plot(x, exp(x), 'b-');
+xlabel("x");
+ylabel("e^x");
+title("y = e^x");
+subplot(2, 2, 2);
+plot(x, sin(x), 'b-');
+xlabel("x");
+ylabel("sin(x)");
+title("y = sin(x)");
+subplot(2, 2, 3);
+plot(x, 5*x.^2+2*x+4, 'b-');
+xlabel("x");
+ylabel("5x^2+2x+4");
+title("y = 5x^2+2x+4");
+subplot(2, 2, 4);
+plot(x, sqrt(x), 'b-');
+xlabel("x");
+ylabel("y");
+title("y = sqrt(x)");
